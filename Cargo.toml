@@ -9,3 +9,4 @@ edition = "2021"
 actix-web = "4"
 serde = "1.0.152"
 tokio-postgres = "0.7.7"
+regex = {version="1.7.1", features=["std"]}

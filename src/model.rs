@@ -1,7 +1,8 @@
-use regex::Regex;
-use std::io;
+
 
 pub mod model{
+    use regex::Regex;
+    use std::io;
 
     pub struct SignupInfo{
         email: String,
@@ -10,10 +11,10 @@ pub mod model{
     }
 
     impl SignupInfo{
-        fn validate_email() -> None{
+        fn validate_email(self: &Self){
             let re = Regex::new(r"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$").unwrap();
-            let email_id = SignupInfo.email;
-            assert!(re.is_match(email_id));
+            let email_id = &self.email;
+            assert!(re.is_match(&email_id));
         }
 
         fn validate_password() -> io::Result<()>{
@@ -27,10 +28,10 @@ pub mod model{
     }
 
     impl LoginInfo{
-        fn validate_email() -> None{
+        fn validate_email(self: &Self){
             let re = Regex::new(r"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$").unwrap();
-            let email_id = SignupInfo.email;
-            assert!(re.is_match(email_id));
+            let email_id = &self.email;
+            assert!(re.is_match(&email_id));
         }
 
         fn validate_password() -> io::Result<()>{

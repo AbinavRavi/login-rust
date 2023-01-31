@@ -1,38 +1,40 @@
-mod model;
 use regex::Regex;
 use std::io;
 
-struct SignupInfo{
-    email: String,
-    password: String,
-    name: String,
-}
+pub mod model{
 
-impl SignupInfo{
-    fn validate_email() -> None{
-        let re = Regex::new(r"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$").unwrap();
-        let email_id = SignupInfo.email;
-        assert!(re.is_match(email_id));
+    pub struct SignupInfo{
+        email: String,
+        password: String,
+        name: String,
     }
 
-    fn validate_password() -> io::Result<()>{
-        Ok(())
-    }
-}
+    impl SignupInfo{
+        fn validate_email() -> None{
+            let re = Regex::new(r"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$").unwrap();
+            let email_id = SignupInfo.email;
+            assert!(re.is_match(email_id));
+        }
 
-struct LoginInfo{
-    email: String,
-    password: String
-}
-
-impl LoginInfo{
-    fn validate_email() -> None{
-        let re = Regex::new(r"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$").unwrap();
-        let email_id = SignupInfo.email;
-        assert!(re.is_match(email_id));
+        fn validate_password() -> io::Result<()>{
+            Ok(())
+        }
     }
 
-    fn validate_password() -> io::Result<()>{
-        Ok(())
+    pub struct LoginInfo{
+        email: String,
+        password: String
+    }
+
+    impl LoginInfo{
+        fn validate_email() -> None{
+            let re = Regex::new(r"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$").unwrap();
+            let email_id = SignupInfo.email;
+            assert!(re.is_match(email_id));
+        }
+
+        fn validate_password() -> io::Result<()>{
+            Ok(())
+        }
     }
 }

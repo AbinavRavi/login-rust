@@ -1,5 +1,7 @@
 mod model;
+mod routes;
 use crate::model::model::{SignupInfo,LoginInfo};
+use crate::routes::routes::{login, register};
 use actix_web::{get, web, App, HttpServer, Responder};
 use std::io;
 

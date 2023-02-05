@@ -2,22 +2,20 @@ mod model;
 mod routes;
 use crate::model::model::{SignupInfo,LoginInfo};
 use crate::routes::routes::{login, register};
-use actix_web::{get, web, App, HttpServer, Responder};
+use actix_web::{get, web, App, HttpServer,HttpRequest, Responder};
 use std::io;
 
-async fn index() -> impl Responder {
+async fn health_check(req: HttpRequest) -> impl Responder {
     "All Ok"
 }
 
-#[actix_web::main]
+#[tokio::main]
 async fn main() -> io::Result<()> {
     HttpServer::new(|| {
-        App::new().service(
-            // prefixes all resources and routes attached to it...
-            web::scope("/users")
-                // ...so this handles requests for `GET /app/index.html`
-                .route("/health-check", web::get().to(index)),
-        )
+        App::new()
+                .route("/health-check", web::get().to(health_check))
+                .route("/login", web::get().to(login))
+                .route("/register", web::get().to(register))
     })
     .bind(("127.0.0.1", 8000))?
     .run()

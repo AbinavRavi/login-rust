@@ -1,9 +1,9 @@
 mod routes;
-use crate::routes::routes::{login, register, forget_password, refresh, reset_password, logout, verify};
+use routes::{login, register, forget_password, refresh, reset_password, logout, verify};
 use actix_web::{web, App, HttpServer,HttpRequest, Responder};
 use std::io;
 
-async fn health_check(req: HttpRequest) -> impl Responder {
+async fn health_check(_req: HttpRequest) -> impl Responder {
     "All Ok"
 }
 

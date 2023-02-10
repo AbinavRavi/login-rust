@@ -7,12 +7,13 @@ use model::{LoginInfo, SignupInfo};
 use crate::model;
 
 pub async fn register(email: String, password: String, name: String) -> impl Responder{
-    let register: SignupInfo = SignupInfo{
-        email: email.to_owned(),
-        password: password.to_owned(),
-        name: name.to_owned()
+    let mut register: SignupInfo = SignupInfo{
+        email: email,
+        password: password,
+        name: name
     };
-    
+    let serialized_user = serde_json::to_string(&register).unwrap();
+
     "Registration Successful"
 }
 

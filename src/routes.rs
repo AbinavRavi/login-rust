@@ -1,7 +1,17 @@
 use actix_web::Responder;
+use std::fs;
+use serde::{Deserialize, Serialize};
+use serde_json::Result;
+use model::{LoginInfo, SignupInfo};
 
+use crate::model;
 
-pub async fn register(email: String, password: String) -> impl Responder{
+pub async fn register(email: String, password: String, name: String) -> impl Responder{
+    let register: SignupInfo = SignupInfo{
+        email: email.to_owned(),
+        password: password.to_owned(),
+        name: name.to_owned()
+    };
     
     "Registration Successful"
 }

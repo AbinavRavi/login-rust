@@ -1,4 +1,5 @@
 mod routes;
+mod model;
 use routes::{login, register, forget_password, refresh, reset_password, logout, verify};
 use actix_web::{web, App, HttpServer,HttpRequest, Responder};
 use std::io;

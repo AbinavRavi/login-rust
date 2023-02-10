@@ -1,12 +1,14 @@
-pub mod model{
-    pub struct SignupInfo{
-        email: String,
-        password: String,
-        name: String,
-    }
+use serde::{Deserialize, Serialize};
 
-    pub struct LoginInfo{
-        email: String,
-        password: String
-    }
+#[derive(Serialize, Deserialize)]
+pub struct SignupInfo{
+    pub email: String,
+    pub password: String,
+    pub name: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct LoginInfo{
+    pub email: String,
+    pub password: String
 }

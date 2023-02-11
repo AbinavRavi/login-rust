@@ -1,10 +1,16 @@
 use actix_web::Responder;
-use std::fs;
+use std::{fs, collections::btree_set::Union};
+use std::io::BufWriter;
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
 use model::{LoginInfo, SignupInfo};
-
+use std::path::Path;
 use crate::model;
+
+fn check_path(filename: String) -> bool {
+    let result = Path::new(&filename).exists();
+    result
+}
 
 pub async fn register(email: String, password: String, name: String) -> impl Responder{
     let mut register: SignupInfo = SignupInfo{
@@ -13,7 +19,14 @@ pub async fn register(email: String, password: String, name: String) -> impl Res
         name: name
     };
     let serialized_user = serde_json::to_string(&register).unwrap();
+    let var: bool = check_path("db.json".to_string());
+    // if var {
+    //     // write to the json file
 
+    // }
+    // else{
+    //     return "DB doesnt exist"
+    // }
     "Registration Successful"
 }
 
